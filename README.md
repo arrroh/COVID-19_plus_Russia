@@ -148,8 +148,14 @@ March, 25 we follow the below procedure:
 * ~~Auto-generate timeseries~~
 * Daily update CSSE with Russian state information
 * Find data on Russian regions for pre- 25.03.2020 period.
+* Change pre-02.06.2020 names of regions to match the upstream ones.
 
 ### Log
+
+#### 02.06.2020
+
+* Found details on russian regions in the upstream. Looks like they started to
+  track them as well.
 
 #### 03.05.2020
 
