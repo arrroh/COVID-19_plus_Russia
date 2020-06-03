@@ -50,7 +50,14 @@ def check_file(filepath:str, cs:CheckerState)->List[Error]:
         prev_ru=filter_ru(prev)
         prev_regions=len(prev_ru.index)
         num_regions=len(ru.index)
-        assert num_regions>=prev_regions, f'Number of regioins decreased!  {num_regions} < {prev_regions}'
+        if not (num_regions>=prev_regions):
+          print(
+            f"\nPrev regions: {list(sorted(prev_ru['Province_State'].tolist()))} \n\n"
+            f"New regions: {list(sorted(ru['Province_State'].tolist()))}")
+          assert False, (
+            f"Number of regioins decreased! "
+            f"{num_regions} < {prev_regions}. "
+            )
         assert len(ru[ru['Confirmed']>=0].index)==num_regions, 'ill-formed confirmed'
         assert len(ru[ru['Deaths']>=0].index)==num_regions, 'ill-formed deaths'
         assert len(ru[ru['Recovered']>=0].index)==num_regions, 'ill-formed recovered'
