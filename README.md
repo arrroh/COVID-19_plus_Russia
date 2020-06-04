@@ -149,6 +149,7 @@ March, 25 we follow the below procedure:
 * Daily update CSSE with Russian state information
 * Find data on Russian regions for pre- 25.03.2020 period.
 * Change pre-02.06.2020 names of regions to match the upstream ones.
+  - [Discussion](https://github.com/grwlf/COVID-19_plus_Russia/issues/5)
 
 ### Log
 
