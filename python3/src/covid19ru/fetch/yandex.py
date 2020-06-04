@@ -75,8 +75,8 @@ def fetch_pending(filepath:str, dump_folder:str=COVID19RU_PENDING)->PendingData:
   return data
 
 
-REGIONS_RU_EN={r_ru:r_en for r_en,r_ru in REGIONS}
-REGIONS_EN_RU={r_en:r_ru for r_en,r_ru in REGIONS}
+REGIONS_RU_EN={r_ru:r_en2 for r_en,r_ru,r_en2 in REGIONS}
+REGIONS_EN_RU={r_en2:r_ru for r_en,r_ru,r_en2 in REGIONS}
 
 def yandex_unpack_coordinates(dat:dict, default)->Tuple[float,float]:
   c=dat.get('coordinates')
@@ -96,10 +96,10 @@ def format_csse2(data:PendingData,
   res = []
   misses = []
   for c_ru,dat in data.val.items():
-    if (not assert_unknown) and (c_ru not in {ru:en for en,ru in REGIONS}):
+    if (not assert_unknown) and (c_ru not in REGIONS_RU_EN):
       misses.append(c_ru)
       continue
-    c_en={ru:en for en,ru in REGIONS}[c_ru]
+    c_en=REGIONS_RU_EN[c_ru]
 
     update_time = data.utcnow.strftime("%Y-%m-%d %H:%M:%S")
     loc_lat,loc_lon = LOCATION.get(c_en, yandex_unpack_coordinates(dat,LOCATION_DEF))
