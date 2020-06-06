@@ -13,6 +13,7 @@ from .check import filedate, is_format1, is_format2, is_format2_buggy
 
 
 def load_format1(filepath:str)->DataFrame:
+  """ Load data in old format, that is, 03-21-2020.csv and before """
   pd1=read_csv(filepath)
   return DataFrame({
     'FIPS':None,
